@@ -11,13 +11,13 @@ class CarModel(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.brand + ' ' + self.name
+        return self.name
 
 class Car(models.Model):
     brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
     name = models.ForeignKey(CarModel, on_delete=models.CASCADE)
     engine = models.CharField(max_length=30)
-    body = models.CharField(max_length=30)
+    body = models.CharField(max_length=30, blank=True)
     year = models.IntegerField()
     price = models.IntegerField()
     mileage = models.PositiveIntegerField(help_text="Пробіг автомобіля")
@@ -39,3 +39,6 @@ class Car(models.Model):
         'expiring': 'Expiring',
         'out of stock': 'Out of stock',
     })
+
+    def __str__(self):
+        return str(self.brand) + ' ' + str(self.name) + ' ' + str(self.year)
