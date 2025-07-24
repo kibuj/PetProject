@@ -2,3 +2,5 @@
 *.pyo
 /.idea
 /.venv
+/.env
+/onlineshop/media
